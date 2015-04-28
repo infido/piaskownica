@@ -490,7 +490,22 @@ namespace Piaskownica
 
         private void dataGridView1_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            //timer1.Start();
+            if (dataGridView1.Columns[e.ColumnIndex].Name.Equals("currstate"))
+            {
+                try
+                {
+                    string tmpKol = cascheStatus[(string)dataGridView1.CurrentRow.Cells["STATUS"].Value.ToString()];
+
+                    if (tmpKol != "")
+                    {
+                        dataGridView1.CurrentRow.DefaultCellStyle.BackColor = (Color)zamianaKoloruNaColor(tmpKol);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //throw;
+                }
+            }
         }
 
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
