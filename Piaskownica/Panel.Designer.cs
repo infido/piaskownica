@@ -73,11 +73,11 @@
             // cbShowArchiwum
             // 
             this.cbShowArchiwum.AutoSize = true;
-            this.cbShowArchiwum.Location = new System.Drawing.Point(1087, 33);
+            this.cbShowArchiwum.Location = new System.Drawing.Point(1018, 35);
             this.cbShowArchiwum.Name = "cbShowArchiwum";
-            this.cbShowArchiwum.Size = new System.Drawing.Size(160, 17);
+            this.cbShowArchiwum.Size = new System.Drawing.Size(220, 17);
             this.cbShowArchiwum.TabIndex = 5;
-            this.cbShowArchiwum.Text = "Pokazać zapisy archiwalne?";
+            this.cbShowArchiwum.Text = "Pokazać zapisy archiwalne i anulowane?";
             this.cbShowArchiwum.UseVisualStyleBackColor = true;
             this.cbShowArchiwum.CheckedChanged += new System.EventHandler(this.cbShowArchiwum_CheckedChanged);
             // 
