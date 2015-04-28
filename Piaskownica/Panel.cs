@@ -167,6 +167,15 @@ namespace Piaskownica
 
             #endregion
 
+            //if (memberColumn > 0 && memberRow >= 0)
+            //{
+            //    dataGridView1.Focus();
+            //    this.dataGridView1.CurrentCell = dataGridView1.Rows[memberRow].Cells[memberColumn];
+            //    dataGridView1.CurrentCell.Selected = true;
+            //    dataGridView1.BeginEdit(true);
+            //    dataGridView1.Focus();
+            //}
+
             if (tTextToFind.Text.Length > 0 && kolumna!=null && kolumna!="")
             {
                 bSearch.PerformClick();
