@@ -1,0 +1,12 @@
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\bin\Release\Piaskownica.exe
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\bin\Release\Piaskownica.pdb
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\bin\Release\FirebirdSql.Data.FirebirdClient.dll
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\bin\Release\FirebirdSql.Data.FirebirdClient.pdb
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\Piaskownica.ConnectionDB.resources
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\Piaskownica.Panel.resources
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\Piaskownica.Properties.Resources.resources
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\Piaskownica.exe
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\Piaskownica.pdb
