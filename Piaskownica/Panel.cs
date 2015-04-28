@@ -74,9 +74,11 @@ namespace Piaskownica
             dataGridView1.Columns["PRACOWNIK"].Visible = false;
 
             dataGridView1.Columns["Z_DNIA"].Width = 75;
-            dataGridView1.Columns["PRODUKT"].Width = 260;
+            dataGridView1.Columns["Z_DNIA"].ReadOnly = true;
+            dataGridView1.Columns["PRODUKT"].Width = 295;
 
-
+            dataGridView1.Columns["OSTATNIA_ZMIANA"].ReadOnly = true;
+            dataGridView1.Columns["TOWAR_NA_MIEJSCU"].Width = 135;
 
             #region dodatkowoa kolumna z ustawieniem statusu
 
