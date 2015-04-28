@@ -46,7 +46,7 @@ namespace Piaskownica
 
             if (cbShowArchiwum.Checked == false)
             {
-                strQuery += " where STATUS <> 'Archiwum' ";
+                strQuery += " where STATUS not in ('Archiwum','Anulowany') ";
             }
 
             fda = new FbDataAdapter(strQuery, polaczenie.getConnection());
