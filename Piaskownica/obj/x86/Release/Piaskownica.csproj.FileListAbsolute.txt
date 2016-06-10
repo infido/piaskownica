@@ -10,3 +10,5 @@ C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piasko
 C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\GenerateResource.write.1.tlog
 C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\Piaskownica.exe
 C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\Piaskownica.pdb
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\Ewispergi.Zapytanie.resources
+C:\Documents and Settings\user\moje dokumenty\visual studio 2010\Projects\Piaskownica\Piaskownica\obj\x86\Release\Piaskownica.SQL.resources

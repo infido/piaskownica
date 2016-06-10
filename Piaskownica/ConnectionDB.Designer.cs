@@ -35,7 +35,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.instalacjaSieciowa = new System.Windows.Forms.RadioButton();
             this.instalacjaLokalna = new System.Windows.Forms.RadioButton();
@@ -57,8 +56,15 @@
             this.otwórzKonfiguracjęZPlikuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.tPath2 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rDB1 = new System.Windows.Forms.RadioButton();
+            this.rDB2 = new System.Windows.Forms.RadioButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.sQLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -72,7 +78,7 @@
             // 
             // Zapisz
             // 
-            this.Zapisz.Location = new System.Drawing.Point(258, 397);
+            this.Zapisz.Location = new System.Drawing.Point(258, 435);
             this.Zapisz.Name = "Zapisz";
             this.Zapisz.Size = new System.Drawing.Size(80, 32);
             this.Zapisz.TabIndex = 1;
@@ -114,15 +120,6 @@
             this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "Adres serwera*";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 158);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Ścieżka*";
             // 
             // groupBox1
             // 
@@ -175,7 +172,7 @@
             // 
             // tPath
             // 
-            this.tPath.Location = new System.Drawing.Point(63, 155);
+            this.tPath.Location = new System.Drawing.Point(160, 19);
             this.tPath.Name = "tPath";
             this.tPath.Size = new System.Drawing.Size(340, 20);
             this.tPath.TabIndex = 10;
@@ -184,7 +181,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(409, 158);
+            this.label6.Location = new System.Drawing.Point(409, 138);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 11;
@@ -192,7 +189,7 @@
             // 
             // tPort
             // 
-            this.tPort.Location = new System.Drawing.Point(441, 155);
+            this.tPort.Location = new System.Drawing.Point(441, 135);
             this.tPort.Name = "tPort";
             this.tPort.Size = new System.Drawing.Size(77, 20);
             this.tPort.TabIndex = 12;
@@ -200,7 +197,7 @@
             // statusStrip1
             // 
             this.statusStrip1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.statusStrip1.Location = new System.Drawing.Point(0, 445);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 470);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(536, 22);
             this.statusStrip1.TabIndex = 13;
@@ -208,7 +205,7 @@
             // 
             // Testuj
             // 
-            this.Testuj.Location = new System.Drawing.Point(15, 397);
+            this.Testuj.Location = new System.Drawing.Point(15, 435);
             this.Testuj.Name = "Testuj";
             this.Testuj.Size = new System.Drawing.Size(75, 32);
             this.Testuj.TabIndex = 14;
@@ -219,16 +216,16 @@
             // outtext
             // 
             this.outtext.BackColor = System.Drawing.Color.Azure;
-            this.outtext.Location = new System.Drawing.Point(15, 181);
+            this.outtext.Location = new System.Drawing.Point(15, 244);
             this.outtext.Name = "outtext";
             this.outtext.ReadOnly = true;
-            this.outtext.Size = new System.Drawing.Size(503, 176);
+            this.outtext.Size = new System.Drawing.Size(503, 151);
             this.outtext.TabIndex = 15;
             this.outtext.Text = "";
             // 
             // bRozlacz
             // 
-            this.bRozlacz.Location = new System.Drawing.Point(177, 397);
+            this.bRozlacz.Location = new System.Drawing.Point(177, 435);
             this.bRozlacz.Name = "bRozlacz";
             this.bRozlacz.Size = new System.Drawing.Size(75, 32);
             this.bRozlacz.TabIndex = 16;
@@ -238,7 +235,7 @@
             // 
             // bClear
             // 
-            this.bClear.Location = new System.Drawing.Point(456, 331);
+            this.bClear.Location = new System.Drawing.Point(456, 369);
             this.bClear.Name = "bClear";
             this.bClear.Size = new System.Drawing.Size(62, 26);
             this.bClear.TabIndex = 17;
@@ -248,7 +245,7 @@
             // 
             // bNewFDB
             // 
-            this.bNewFDB.Location = new System.Drawing.Point(96, 397);
+            this.bNewFDB.Location = new System.Drawing.Point(96, 435);
             this.bNewFDB.Name = "bNewFDB";
             this.bNewFDB.Size = new System.Drawing.Size(75, 32);
             this.bNewFDB.TabIndex = 18;
@@ -258,7 +255,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(443, 397);
+            this.button1.Location = new System.Drawing.Point(443, 435);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(80, 32);
             this.button1.TabIndex = 19;
@@ -280,7 +277,9 @@
             // 
             this.plikToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.zapiszKonfiguracjęDoPlikuToolStripMenuItem,
-            this.otwórzKonfiguracjęZPlikuToolStripMenuItem});
+            this.otwórzKonfiguracjęZPlikuToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.sQLToolStripMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
             this.plikToolStripMenuItem.Size = new System.Drawing.Size(34, 20);
             this.plikToolStripMenuItem.Text = "Plik";
@@ -309,12 +308,67 @@
             // 
             this.saveFileDialog1.Filter = "xml files|*.xml|Wszystkie pliki|*.*";
             // 
+            // tPath2
+            // 
+            this.tPath2.Location = new System.Drawing.Point(160, 45);
+            this.tPath2.Name = "tPath2";
+            this.tPath2.Size = new System.Drawing.Size(340, 20);
+            this.tPath2.TabIndex = 21;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rDB2);
+            this.groupBox2.Controls.Add(this.rDB1);
+            this.groupBox2.Controls.Add(this.tPath);
+            this.groupBox2.Controls.Add(this.tPath2);
+            this.groupBox2.Location = new System.Drawing.Point(12, 161);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(506, 77);
+            this.groupBox2.TabIndex = 22;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Ścieżka";
+            // 
+            // rDB1
+            // 
+            this.rDB1.AutoSize = true;
+            this.rDB1.Checked = true;
+            this.rDB1.Location = new System.Drawing.Point(36, 22);
+            this.rDB1.Name = "rDB1";
+            this.rDB1.Size = new System.Drawing.Size(88, 17);
+            this.rDB1.TabIndex = 22;
+            this.rDB1.TabStop = true;
+            this.rDB1.Text = "Baza główna";
+            this.rDB1.UseVisualStyleBackColor = true;
+            // 
+            // rDB2
+            // 
+            this.rDB2.AutoSize = true;
+            this.rDB2.Location = new System.Drawing.Point(36, 46);
+            this.rDB2.Name = "rDB2";
+            this.rDB2.Size = new System.Drawing.Size(112, 17);
+            this.rDB2.TabIndex = 23;
+            this.rDB2.Text = "Baza alternatywna";
+            this.rDB2.UseVisualStyleBackColor = true;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(216, 6);
+            // 
+            // sQLToolStripMenuItem
+            // 
+            this.sQLToolStripMenuItem.Name = "sQLToolStripMenuItem";
+            this.sQLToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.sQLToolStripMenuItem.Text = "SQL";
+            this.sQLToolStripMenuItem.Click += new System.EventHandler(this.sQLToolStripMenuItem_Click);
+            // 
             // ConnectionDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(536, 467);
+            this.ClientSize = new System.Drawing.Size(536, 492);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bNewFDB);
             this.Controls.Add(this.bClear);
@@ -326,11 +380,9 @@
             this.Controls.Add(this.tPort);
             this.Controls.Add(this.tServer);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.tPath);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tPassword);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tUser);
@@ -344,6 +396,8 @@
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,7 +411,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox tServer;
         private System.Windows.Forms.RadioButton instalacjaSieciowa;
@@ -379,5 +432,11 @@
         private System.Windows.Forms.ToolStripMenuItem otwórzKonfiguracjęZPlikuToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.TextBox tPath2;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rDB2;
+        private System.Windows.Forms.RadioButton rDB1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem sQLToolStripMenuItem;
     }
 }

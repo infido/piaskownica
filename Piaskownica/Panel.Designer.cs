@@ -50,6 +50,7 @@
             this.buttonZamknij = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lBaza = new System.Windows.Forms.Label();
             this.panelNaglowek.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelStopka.SuspendLayout();
@@ -67,13 +68,13 @@
             this.panelNaglowek.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelNaglowek.Location = new System.Drawing.Point(0, 0);
             this.panelNaglowek.Name = "panelNaglowek";
-            this.panelNaglowek.Size = new System.Drawing.Size(1250, 62);
+            this.panelNaglowek.Size = new System.Drawing.Size(1310, 62);
             this.panelNaglowek.TabIndex = 0;
             // 
             // cbShowArchiwum
             // 
             this.cbShowArchiwum.AutoSize = true;
-            this.cbShowArchiwum.Location = new System.Drawing.Point(1018, 35);
+            this.cbShowArchiwum.Location = new System.Drawing.Point(1068, 37);
             this.cbShowArchiwum.Name = "cbShowArchiwum";
             this.cbShowArchiwum.Size = new System.Drawing.Size(220, 17);
             this.cbShowArchiwum.TabIndex = 5;
@@ -125,7 +126,7 @@
             this.ustawieniaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1250, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1310, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -196,16 +197,17 @@
             // 
             // panelStopka
             // 
+            this.panelStopka.Controls.Add(this.lBaza);
             this.panelStopka.Controls.Add(this.buttonZamknij);
             this.panelStopka.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelStopka.Location = new System.Drawing.Point(0, 652);
             this.panelStopka.Name = "panelStopka";
-            this.panelStopka.Size = new System.Drawing.Size(1250, 43);
+            this.panelStopka.Size = new System.Drawing.Size(1310, 43);
             this.panelStopka.TabIndex = 1;
             // 
             // buttonZamknij
             // 
-            this.buttonZamknij.Location = new System.Drawing.Point(1163, 8);
+            this.buttonZamknij.Location = new System.Drawing.Point(1223, 8);
             this.buttonZamknij.Name = "buttonZamknij";
             this.buttonZamknij.Size = new System.Drawing.Size(75, 23);
             this.buttonZamknij.TabIndex = 0;
@@ -220,7 +222,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 62);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1250, 590);
+            this.dataGridView1.Size = new System.Drawing.Size(1310, 590);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
@@ -236,11 +238,20 @@
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lBaza
+            // 
+            this.lBaza.AutoSize = true;
+            this.lBaza.Location = new System.Drawing.Point(13, 18);
+            this.lBaza.Name = "lBaza";
+            this.lBaza.Size = new System.Drawing.Size(92, 13);
+            this.lBaza.TabIndex = 1;
+            this.lBaza.Text = "połączono z bazą";
+            // 
             // Panel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1250, 695);
+            this.ClientSize = new System.Drawing.Size(1310, 695);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panelStopka);
             this.Controls.Add(this.panelNaglowek);
@@ -255,6 +266,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelStopka.ResumeLayout(false);
+            this.panelStopka.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -282,6 +294,7 @@
         private System.Windows.Forms.Label lToSearch;
         private System.Windows.Forms.CheckBox cbShowArchiwum;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lBaza;
     }
 }
 

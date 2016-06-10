@@ -29,6 +29,7 @@ namespace Piaskownica
             InitializeComponent();
             polaczenie = new ConnectionDB();
             Text = "Piaskownica " + Application.ProductVersion;
+            lBaza.Text = "Połaczono z bazą " + polaczenie.getDBName();
         }
 
         private void Panel_Load(object sender, EventArgs e)
@@ -69,10 +70,11 @@ namespace Piaskownica
 
             timer1.Start();
 
-            dataGridView1.Columns["ID"].Visible = false;
+            //dataGridView1.Columns["ID"].Visible = false;
             dataGridView1.Columns["STATUS"].Visible = false;
             dataGridView1.Columns["PRACOWNIK"].Visible = false;
 
+            dataGridView1.Columns["ID"].Width = 40;
             dataGridView1.Columns["Z_DNIA"].Width = 75;
             dataGridView1.Columns["Z_DNIA"].ReadOnly = true;
             dataGridView1.Columns["PRODUKT"].Width = 295;
@@ -598,11 +600,27 @@ namespace Piaskownica
                     if (kolumna.Equals("currpracownik"))
                         fDataView.RowFilter = "PRACOWNIK Like '%" + tTextToFind.Text + "%'";
                     else if (kolumna.Equals("currstate"))
-                        fDataView.RowFilter = "STATUS Like '%" + tTextToFind.Text + "%'";  
+                        fDataView.RowFilter = "STATUS Like '%" + tTextToFind.Text + "%'";
+                    else if (kolumna.Equals("ID"))
+                        if (tTextToFind.Text.Length > 0)
+                            fDataView.RowFilter = "ID = " + tTextToFind.Text + " ";
+                        else
+                            fDataView.RowFilter = "";
                     else
-                    fDataView.RowFilter = kolumna + " Like '%" + tTextToFind.Text + "%'";  
+                        fDataView.RowFilter = kolumna + " Like '%" + tTextToFind.Text + "%'";  
                     
                     dataGridView1.Refresh();
+                    
+                        //item.Cells[3].Value = item.Cells["KOLOR"].Value;
+                        //if (item.Cells["KOLOR"].Value == null)
+                        //{
+                        //    item.DefaultCellStyle.BackColor = Color.Empty;
+                        //}
+                        //else
+                        //{
+                        //    item.DefaultCellStyle.BackColor = (Color)zamianaKoloruNaColor((string)item.Cells["KOLOR"].Value.ToString());
+                        //}
+                    
                 }
                 else
                     MessageBox.Show("Nie wskazano kolumny do wyszukania!", "Wyszukiwanie");
@@ -618,7 +636,8 @@ namespace Piaskownica
 
         private void tTextToFind_KeyUp(object sender, KeyEventArgs e)
         {
-            bSearch.PerformClick();
+            if (!kolumna.Equals("ID"))
+                bSearch.PerformClick();
         }
 
         private void cbShowArchiwum_CheckedChanged(object sender, EventArgs e)
@@ -627,6 +646,7 @@ namespace Piaskownica
             {
                 wczytajDaneZamowien();
             }
+            lBaza.Text = "Połaczono z bazą " + polaczenie.getDBName();
         }
 
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)

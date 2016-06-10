@@ -130,15 +130,31 @@ namespace Piaskownica
             {
                 setloc[1] = "Password=masterkey;";
             };
-            if (tPath.Text.Length > 0)
+            if (rDB1.Checked)
             {
-                setloc[2] = "Database=" + tPath.Text + ";";
+                if (tPath.Text.Length > 0)
+                {
+                    setloc[2] = "Database=" + tPath.Text + ";";
+                }
+                else
+                {
+                    setloc[2] = "Database=C:\\Firebird\\Databases\\KopiaPiaskownica.fdb;";
+                    setloc[2] = "Database=/usr/samba/imex/piaskownica/PIASKOWNICA.FDB;";
+                };
             }
             else
             {
-                //setloc[2] = "Database=C:\\Firebird\\Databases\\KopiaPiaskownica.fdb;";
-                setloc[2] = "Database=/usr/samba/imex/piaskownica/PIASKOWNICA.FDB;";
-            };
+                if (tPath2.Text.Length > 0)
+                {
+                    setloc[2] = "Database=" + tPath2.Text + ";";
+                }
+                else
+                {
+                    setloc[2] = "Database=C:\\data\\PiaskownicaNS.fdb;";
+                    setloc[2] = "Database=/usr/samba/imex/piaskownica/PIASKOWNICANS.FDB;";
+                };
+            }
+            
             if (tServer.Text.Length > 0)
             {
                 setloc[3] = "DataSource=" + tServer.Text + ";";
@@ -218,7 +234,6 @@ namespace Piaskownica
 
                 rejestr.SetValue("User", tUser.Text);
                 rejestr.SetValue("Pass", tPassword.Text);
-                rejestr.SetValue("Path", tPath.Text);
                 if (instalacjaSieciowa.Checked)
                 {
                     rejestr.SetValue("Net", 1);
@@ -228,7 +243,14 @@ namespace Piaskownica
                     rejestr.SetValue("Net", 0);
                 }
                 rejestr.SetValue("Serwer", tServer.Text);
+                
+                if (rDB1.Checked)
+                    rejestr.SetValue("Typ", "true");
+                else
+                    rejestr.SetValue("Typ", "false");
+
                 rejestr.SetValue("Path", tPath.Text);
+                rejestr.SetValue("Path2", tPath2.Text);
                 rejestr.SetValue("Port", tPort.Text);
                 }
                 catch (Exception ee)
@@ -251,7 +273,6 @@ namespace Piaskownica
 
             tUser.Text = (String)rejestr.GetValue("User");
             tPassword.Text = (String)rejestr.GetValue("Pass");
-            tPath.Text=(String)rejestr.GetValue("Path");
             Console.WriteLine(">>" + rejestr.GetValue("Net"));
             if ((int)rejestr.GetValue("Net")==1)
             {
@@ -264,7 +285,21 @@ namespace Piaskownica
                 instalacjaSieciowa.Checked = false;
             }
             tServer.Text = (String)rejestr.GetValue("Serwer");
+
+            string tmpp= (String)rejestr.GetValue("Typ");
+            if (tmpp.Equals("true"))
+            {
+                rDB1.Checked = true;
+                rDB2.Checked = false;
+            }
+            else
+            {
+                rDB1.Checked = false;
+                rDB2.Checked = true;
+            }
+
             tPath.Text = (String)rejestr.GetValue("Path");
+            tPath2.Text = (String)rejestr.GetValue("Path2"); 
             tPort.Text = (String)rejestr.GetValue("Port");
             }
             catch (Exception ee)
@@ -344,7 +379,9 @@ namespace Piaskownica
                             new XElement("instalacjaLokalna", instalacjaLokalna.Checked),
                             new XElement("instalacjaSieciowa", instalacjaSieciowa.Checked),
                             new XElement("tServer", tServer.Text),
+                            new XElement("tTyp", rDB1.Checked), 
                             new XElement("tPath", tPath.Text),
+                            new XElement("tPath2", tPath2.Text),
                             new XElement("tPort", tPort.Text)
                          )
                     );
@@ -366,10 +403,23 @@ namespace Piaskownica
                 tPassword.Text = (String)xDoc.Root.Element("tPassword");
                 instalacjaLokalna.Checked = Convert.ToBoolean((String)xDoc.Root.Element("instalacjaLokalna"));
                 instalacjaSieciowa.Checked = Convert.ToBoolean((String)xDoc.Root.Element("instalacjaSieciowa"));
+                rDB1.Checked = Convert.ToBoolean((String)xDoc.Root.Element("tTyp"));
                 tServer.Text = (String)xDoc.Root.Element("tServer");
                 tPath.Text = (String)xDoc.Root.Element("tPath");
+                tPath2.Text = (String)xDoc.Root.Element("tPath2");
                 tPort.Text = (String)xDoc.Root.Element("tPort");
             }
+        }
+
+        private void sQLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SQL fsql = new SQL(conn);
+            fsql.Show();
+        }
+
+        public string getDBName()
+        {
+            return conn.Database.ToString();
         }
     }
 }
