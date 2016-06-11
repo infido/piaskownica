@@ -405,9 +405,10 @@ namespace Piaskownica
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-                wczytajDaneZamowien();
-                if (memberColumn >= 0 && memberRow >= 0)
-                {
+            string tmpKolumna = kolumna;
+            wczytajDaneZamowien();
+            if (memberColumn >= 0 && memberRow >= 0)
+            {
                     try
                     {
                         this.dataGridView1.CurrentCell = this.dataGridView1[memberColumn, memberRow];
@@ -416,7 +417,8 @@ namespace Piaskownica
                     {
                         //throw;
                     }
-                }
+            }
+            kolumna = tmpKolumna;
         }
 
         private void listaZamówieńToolStripMenuItem_Click(object sender, EventArgs e)
@@ -603,7 +605,15 @@ namespace Piaskownica
                         fDataView.RowFilter = "STATUS Like '%" + tTextToFind.Text + "%'";
                     else if (kolumna.Equals("ID"))
                         if (tTextToFind.Text.Length > 0)
-                            fDataView.RowFilter = "ID = " + tTextToFind.Text + " ";
+                            try
+                            {
+                                fDataView.RowFilter = "ID = " + tTextToFind.Text + " ";
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Błąd filtra: " + ex.Message);
+                                throw;
+                            }
                         else
                             fDataView.RowFilter = "";
                     else
