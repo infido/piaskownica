@@ -19,10 +19,10 @@ namespace Piaskownica
         private String strQuery;
         private String tabela;
         private Dictionary<string, string> cascheStatus;
-        private string kolumna;
+        private volatile string kolumna;
 
-        private Int32 memberRow = -1;
-        private Int32 memberColumn = -1;
+        private volatile Int32 memberRow = -1;
+        private volatile Int32 memberColumn = -1;
 
         public Panel()
         {
@@ -38,8 +38,9 @@ namespace Piaskownica
             wczytajDaneZamowien();
         }
 
-        private void wczytajDaneZamowien()
+        private void wczytajTylkoDaneZamowienia()
         {
+            setCurrentKomorkaByIndex();
             dataGridView1.Columns.Clear();
 
             tabela = "ZAMOWIENIA";
@@ -58,17 +59,24 @@ namespace Piaskownica
 
             try
             {
+                Int32 tmpMemberColumn = memberColumn;
+                string tmpKolumna = kolumna;
                 fda.Fill(fds.Tables["TAB"]);
                 fDataView.Table = fds.Tables["TAB"];
                 dataGridView1.DataSource = fDataView;
+                memberColumn = tmpMemberColumn;
+                kolumna = tmpKolumna;
+                if (dataGridView1.Rows.Count > 0 && memberColumn != -1)
+                {
+                    dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[memberColumn];
+                    dataGridView1.CurrentCell.Selected = true;
+                }
             }
             catch (Exception ee)
             {
                 MessageBox.Show("Błąd ładowania wartości: " + ee.Message);
                 //throw;
             }
-
-            timer1.Start();
 
             //dataGridView1.Columns["ID"].Visible = false;
             dataGridView1.Columns["STATUS"].Visible = false;
@@ -85,9 +93,17 @@ namespace Piaskownica
             #region dodatkowoa kolumna z ustawieniem statusu
 
             // tworzymy nowy obiekt
-            fds.Tables.Add("STATUSYTMP");
+            try
+            {
+                fds.Tables.Add("STATUSYTMP");
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
             // Dodajemy kolumy do zbioru
-              //fds.Tables["STATUSYTMP"].Columns.Add("aktualnyStatus", typeof(string));
+            //fds.Tables["STATUSYTMP"].Columns.Add("aktualnyStatus", typeof(string));
             // Dodajemy zawartość 
             fda = new FbDataAdapter("select STATUS,KOLOR from STATUSY", polaczenie.getConnection());
             try
@@ -144,8 +160,11 @@ namespace Piaskownica
             dataGridView1.Columns.Add(col3);
 
             #endregion
+            ustawKoloryGida();
+        }
 
-            #region Wypełnieni rekordów w tabelce kolorami
+        private void ustawKoloryGida()
+        {
             foreach (DataGridViewRow item in this.dataGridView1.Rows)
             {
                 if (item.Cells["STATUS"].Value != null)
@@ -166,8 +185,16 @@ namespace Piaskownica
                 }
 
             }
+        }
 
-            #endregion
+        private void wczytajDaneZamowien()
+        {
+            setCurrentKomorkaByIndex();               
+            dataGridView1.Columns.Clear();
+
+            wczytajTylkoDaneZamowienia();
+
+            timer1.Start();
 
             //if (memberColumn > 0 && memberRow >= 0)
             //{
@@ -177,6 +204,11 @@ namespace Piaskownica
             //    dataGridView1.BeginEdit(true);
             //    dataGridView1.Focus();
             //}
+
+            if (memberColumn > -1)
+            {
+                dataGridView1.CurrentCell = dataGridView1.Rows[memberRow].Cells[memberColumn];
+            }
 
             if (tTextToFind.Text.Length > 0 && kolumna!=null && kolumna!="")
             {
@@ -403,10 +435,24 @@ namespace Piaskownica
             kolumna = dataGridView1.Columns[e.ColumnIndex].Name;
         }
 
+        private void setCurrentKomorkaByIndex()
+        {
+            try
+            {
+                memberColumn = dataGridView1.CurrentCell.ColumnIndex;
+                memberRow = dataGridView1.CurrentCell.RowIndex;
+                kolumna = dataGridView1.Columns[memberColumn].Name;
+            }
+            catch (Exception)
+            {
+                //throw;
+            }
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             string tmpKolumna = kolumna;
-            wczytajDaneZamowien();
+            wczytajTylkoDaneZamowienia();
             if (memberColumn >= 0 && memberRow >= 0)
             {
                     try
@@ -599,6 +645,10 @@ namespace Piaskownica
                 if (kolumna != null)
                 {
                     //filtrowanie tekstowe
+                    Int32 tmpMemberColumn = memberColumn;
+                    string tmpKolumna = kolumna;
+                    setCurrentKomorkaByIndex();
+
                     if (kolumna.Equals("currpracownik"))
                         fDataView.RowFilter = "PRACOWNIK Like '%" + tTextToFind.Text + "%'";
                     else if (kolumna.Equals("currstate"))
@@ -617,9 +667,18 @@ namespace Piaskownica
                         else
                             fDataView.RowFilter = "";
                     else
-                        fDataView.RowFilter = kolumna + " Like '%" + tTextToFind.Text + "%'";  
+                        fDataView.RowFilter = kolumna + " Like '%" + tTextToFind.Text + "%'";
                     
                     dataGridView1.Refresh();
+
+                    memberColumn = tmpMemberColumn;
+                    kolumna = tmpKolumna;
+                    if (dataGridView1.Rows.Count > 0 && memberColumn != -1)
+                    {
+                        dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[memberColumn];
+                        dataGridView1.CurrentCell.Selected = true;
+                    }
+
                     
                         //item.Cells[3].Value = item.Cells["KOLOR"].Value;
                         //if (item.Cells["KOLOR"].Value == null)
@@ -630,7 +689,7 @@ namespace Piaskownica
                         //{
                         //    item.DefaultCellStyle.BackColor = (Color)zamianaKoloruNaColor((string)item.Cells["KOLOR"].Value.ToString());
                         //}
-                    
+                    ustawKoloryGida();       
                 }
                 else
                     MessageBox.Show("Nie wskazano kolumny do wyszukania!", "Wyszukiwanie");
@@ -639,9 +698,14 @@ namespace Piaskownica
 
         private void bClear_Click(object sender, EventArgs e)
         {
+            Int32 tmpMemberColumn = memberColumn;
             tTextToFind.Text = "";
             fDataView.RowFilter = "";
             dataGridView1.Refresh();
+            memberColumn = tmpMemberColumn;
+            dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[memberColumn];
+            dataGridView1.CurrentCell.Selected = true;
+            ustawKoloryGida();
         }
 
         private void tTextToFind_KeyUp(object sender, KeyEventArgs e)
