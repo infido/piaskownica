@@ -426,6 +426,16 @@ namespace Piaskownica
         {
             setCurrentKomorka(e);
             lToSearch.Text = "Kolumna do filtrowania: " + kolumna;
+            if (kolumna.Equals("Z_DNIA") || kolumna.Equals("OSTATNIA_ZMIANA"))
+            {
+                lToSearch.Enabled = false;
+                tTextToFind.Enabled = false;
+            }
+            else
+            {
+                lToSearch.Enabled = true;
+                tTextToFind.Enabled = true;
+            }
         }
 
         private void setCurrentKomorka(DataGridViewCellEventArgs e)
