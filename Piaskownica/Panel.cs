@@ -24,6 +24,8 @@ namespace Piaskownica
         private volatile Int32 memberRow = -1;
         private volatile Int32 memberColumn = -1;
 
+        private bool jestWTrakceEdycji = false;
+
         public Panel()
         {
             InitializeComponent();
@@ -364,7 +366,17 @@ namespace Piaskownica
         {
             //MessageBox.Show("Kolumna " + e.ColumnIndex + " Wiersz " + e.RowIndex);
             if (tabela.Equals("ZAMOWIENIA") && dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["ID"].Value!=null 
-                && dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["ID"].Value.ToString() == "")
+                && dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["ID"].Value.ToString() == ""
+                && 
+                    ( dataGridView1.Rows[e.RowIndex].Cells["DOSTAWCA"].Value.ToString().Length>0
+                    || dataGridView1.Rows[e.RowIndex].Cells["PRODUKT"].Value.ToString().Length>0
+                    || dataGridView1.Rows[e.RowIndex].Cells["CENA"].Value.ToString().Length > 0
+                    || dataGridView1.Rows[e.RowIndex].Cells["ZALICZKA"].Value.ToString().Length > 0
+                    || dataGridView1.Rows[e.RowIndex].Cells["TELEFON"].Value.ToString().Length > 0
+                    || dataGridView1.Rows[e.RowIndex].Cells["TOWAR_NA_MIEJSCU"].Value.ToString().Length > 0
+                    || dataGridView1.Rows[e.RowIndex].Cells["PRACOWNIK"].Value.ToString().Length > 0
+                    )
+                )
             {
                 strQuery = "INSERT INTO " + tabela;
                 strQuery += " (DOSTAWCA,PRODUKT,CENA,ZALICZKA,TELEFON,TOWAR_NA_MIEJSCU,STATUS,PRACOWNIK) ";
@@ -424,6 +436,7 @@ namespace Piaskownica
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            jestWTrakceEdycji = true;
             setCurrentKomorka(e);
             lToSearch.Text = "Kolumna do filtrowania: " + kolumna;
             if (kolumna.Equals("Z_DNIA") || kolumna.Equals("OSTATNIA_ZMIANA"))
@@ -461,10 +474,12 @@ namespace Piaskownica
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string tmpKolumna = kolumna;
-            wczytajTylkoDaneZamowienia();
-            if (memberColumn >= 0 && memberRow >= 0)
+            if (!jestWTrakceEdycji)
             {
+                string tmpKolumna = kolumna;
+                wczytajTylkoDaneZamowienia();
+                if (memberColumn >= 0 && memberRow >= 0)
+                {
                     try
                     {
                         this.dataGridView1.CurrentCell = this.dataGridView1[memberColumn, memberRow];
@@ -473,8 +488,9 @@ namespace Piaskownica
                     {
                         //throw;
                     }
+                }
+                kolumna = tmpKolumna;
             }
-            kolumna = tmpKolumna;
         }
 
         private void listaZamówieńToolStripMenuItem_Click(object sender, EventArgs e)
@@ -575,6 +591,7 @@ namespace Piaskownica
                     //throw;
                 }
             }
+            jestWTrakceEdycji = false;
         }
 
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -742,6 +759,11 @@ namespace Piaskownica
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
             timer1.Stop();
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            jestWTrakceEdycji = false;
         }
 
 

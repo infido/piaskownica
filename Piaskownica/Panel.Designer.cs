@@ -47,10 +47,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.połączenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelStopka = new System.Windows.Forms.Panel();
+            this.lBaza = new System.Windows.Forms.Label();
             this.buttonZamknij = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lBaza = new System.Windows.Forms.Label();
             this.panelNaglowek.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelStopka.SuspendLayout();
@@ -205,6 +205,15 @@
             this.panelStopka.Size = new System.Drawing.Size(1310, 43);
             this.panelStopka.TabIndex = 1;
             // 
+            // lBaza
+            // 
+            this.lBaza.AutoSize = true;
+            this.lBaza.Location = new System.Drawing.Point(13, 18);
+            this.lBaza.Name = "lBaza";
+            this.lBaza.Size = new System.Drawing.Size(92, 13);
+            this.lBaza.TabIndex = 1;
+            this.lBaza.Text = "połączono z bazą";
+            // 
             // buttonZamknij
             // 
             this.buttonZamknij.Location = new System.Drawing.Point(1223, 8);
@@ -225,6 +234,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1310, 590);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
             this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellLeave);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -237,15 +247,6 @@
             // 
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // lBaza
-            // 
-            this.lBaza.AutoSize = true;
-            this.lBaza.Location = new System.Drawing.Point(13, 18);
-            this.lBaza.Name = "lBaza";
-            this.lBaza.Size = new System.Drawing.Size(92, 13);
-            this.lBaza.TabIndex = 1;
-            this.lBaza.Text = "połączono z bazą";
             // 
             // Panel
             // 
