@@ -51,6 +51,10 @@
             this.buttonZamknij = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.dateOd = new System.Windows.Forms.DateTimePicker();
+            this.labelDo = new System.Windows.Forms.Label();
+            this.labelOd = new System.Windows.Forms.Label();
+            this.dateDo = new System.Windows.Forms.DateTimePicker();
             this.panelNaglowek.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelStopka.SuspendLayout();
@@ -59,6 +63,10 @@
             // 
             // panelNaglowek
             // 
+            this.panelNaglowek.Controls.Add(this.dateDo);
+            this.panelNaglowek.Controls.Add(this.labelOd);
+            this.panelNaglowek.Controls.Add(this.labelDo);
+            this.panelNaglowek.Controls.Add(this.dateOd);
             this.panelNaglowek.Controls.Add(this.cbShowArchiwum);
             this.panelNaglowek.Controls.Add(this.bClear);
             this.panelNaglowek.Controls.Add(this.bSearch);
@@ -84,7 +92,7 @@
             // 
             // bClear
             // 
-            this.bClear.Location = new System.Drawing.Point(573, 31);
+            this.bClear.Location = new System.Drawing.Point(492, 31);
             this.bClear.Name = "bClear";
             this.bClear.Size = new System.Drawing.Size(75, 23);
             this.bClear.TabIndex = 4;
@@ -94,7 +102,7 @@
             // 
             // bSearch
             // 
-            this.bSearch.Location = new System.Drawing.Point(492, 31);
+            this.bSearch.Location = new System.Drawing.Point(861, 31);
             this.bSearch.Name = "bSearch";
             this.bSearch.Size = new System.Drawing.Size(75, 23);
             this.bSearch.TabIndex = 3;
@@ -248,6 +256,48 @@
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // dateOd
+            // 
+            this.dateOd.Enabled = false;
+            this.dateOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateOd.Location = new System.Drawing.Point(623, 32);
+            this.dateOd.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dateOd.Name = "dateOd";
+            this.dateOd.Size = new System.Drawing.Size(88, 20);
+            this.dateOd.TabIndex = 6;
+            this.dateOd.Value = new System.DateTime(2016, 7, 15, 0, 0, 0, 0);
+            // 
+            // labelDo
+            // 
+            this.labelDo.AutoSize = true;
+            this.labelDo.Enabled = false;
+            this.labelDo.Location = new System.Drawing.Point(717, 36);
+            this.labelDo.Name = "labelDo";
+            this.labelDo.Size = new System.Drawing.Size(44, 13);
+            this.labelDo.TabIndex = 7;
+            this.labelDo.Text = "Od daty";
+            // 
+            // labelOd
+            // 
+            this.labelOd.AutoSize = true;
+            this.labelOd.Enabled = false;
+            this.labelOd.Location = new System.Drawing.Point(573, 36);
+            this.labelOd.Name = "labelOd";
+            this.labelOd.Size = new System.Drawing.Size(44, 13);
+            this.labelOd.TabIndex = 8;
+            this.labelOd.Text = "Od daty";
+            // 
+            // dateDo
+            // 
+            this.dateDo.Enabled = false;
+            this.dateDo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateDo.Location = new System.Drawing.Point(767, 32);
+            this.dateDo.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dateDo.Name = "dateDo";
+            this.dateDo.Size = new System.Drawing.Size(88, 20);
+            this.dateDo.TabIndex = 9;
+            this.dateDo.Value = new System.DateTime(2016, 7, 15, 0, 0, 0, 0);
+            // 
             // Panel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,6 +346,10 @@
         private System.Windows.Forms.CheckBox cbShowArchiwum;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lBaza;
+        private System.Windows.Forms.DateTimePicker dateDo;
+        private System.Windows.Forms.Label labelOd;
+        private System.Windows.Forms.Label labelDo;
+        private System.Windows.Forms.DateTimePicker dateOd;
     }
 }
 

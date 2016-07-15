@@ -441,13 +441,21 @@ namespace Piaskownica
             lToSearch.Text = "Kolumna do filtrowania: " + kolumna;
             if (kolumna.Equals("Z_DNIA") || kolumna.Equals("OSTATNIA_ZMIANA"))
             {
-                lToSearch.Enabled = false;
+                bClear.Enabled = false;
                 tTextToFind.Enabled = false;
+                labelDo.Enabled = true;
+                labelOd.Enabled = true;
+                dateOd.Enabled = true;
+                dateDo.Enabled = true;
             }
             else
             {
-                lToSearch.Enabled = true;
+                bClear.Enabled = true;
                 tTextToFind.Enabled = true;
+                labelDo.Enabled = false;
+                labelOd.Enabled = false;
+                dateOd.Enabled = false;
+                dateDo.Enabled = false;
             }
         }
 
@@ -693,6 +701,14 @@ namespace Piaskownica
                             }
                         else
                             fDataView.RowFilter = "";
+                    else if (kolumna.Equals("Z_DNIA"))
+                    {
+                        fDataView.RowFilter = "Z_DNIA >= '" + dateOd.Value.ToShortDateString() + "' AND Z_DNIA <= '" + dateDo.Value.ToShortDateString() + "'";
+                    }
+                    else if (kolumna.Equals("OSTATNIA_ZMIANA"))
+                    {
+                        fDataView.RowFilter = "OSTATNIA_ZMIANA >= '" + dateOd.Value.ToShortDateString() + "' AND OSTATNIA_ZMIANA <= '" + dateDo.Value.ToShortDateString() + "'";
+                    }
                     else
                         fDataView.RowFilter = kolumna + " Like '%" + tTextToFind.Text + "%'";
                     
