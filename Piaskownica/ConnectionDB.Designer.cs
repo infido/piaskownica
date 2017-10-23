@@ -60,10 +60,10 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tPath2 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rDB2 = new System.Windows.Forms.RadioButton();
-            this.rDB1 = new System.Windows.Forms.RadioButton();
             this.rDB3 = new System.Windows.Forms.RadioButton();
             this.tPath3 = new System.Windows.Forms.TextBox();
+            this.rDB2 = new System.Windows.Forms.RadioButton();
+            this.rDB1 = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -344,6 +344,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ścieżka";
             // 
+            // rDB3
+            // 
+            this.rDB3.AutoSize = true;
+            this.rDB3.Location = new System.Drawing.Point(36, 72);
+            this.rDB3.Name = "rDB3";
+            this.rDB3.Size = new System.Drawing.Size(118, 17);
+            this.rDB3.TabIndex = 25;
+            this.rDB3.Text = "Baza alternatywna2";
+            this.rDB3.UseVisualStyleBackColor = true;
+            // 
+            // tPath3
+            // 
+            this.tPath3.Location = new System.Drawing.Point(160, 71);
+            this.tPath3.Name = "tPath3";
+            this.tPath3.Size = new System.Drawing.Size(340, 20);
+            this.tPath3.TabIndex = 24;
+            // 
             // rDB2
             // 
             this.rDB2.AutoSize = true;
@@ -365,23 +382,6 @@
             this.rDB1.TabStop = true;
             this.rDB1.Text = "Baza główna";
             this.rDB1.UseVisualStyleBackColor = true;
-            // 
-            // rDB3
-            // 
-            this.rDB3.AutoSize = true;
-            this.rDB3.Location = new System.Drawing.Point(36, 72);
-            this.rDB3.Name = "rDB3";
-            this.rDB3.Size = new System.Drawing.Size(112, 17);
-            this.rDB3.TabIndex = 25;
-            this.rDB3.Text = "Baza alternatywna";
-            this.rDB3.UseVisualStyleBackColor = true;
-            // 
-            // tPath3
-            // 
-            this.tPath3.Location = new System.Drawing.Point(160, 71);
-            this.tPath3.Name = "tPath3";
-            this.tPath3.Size = new System.Drawing.Size(340, 20);
-            this.tPath3.TabIndex = 24;
             // 
             // ConnectionDB
             // 
