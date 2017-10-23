@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Panel));
             this.panelNaglowek = new System.Windows.Forms.Panel();
+            this.dateDo = new System.Windows.Forms.DateTimePicker();
+            this.labelOd = new System.Windows.Forms.Label();
+            this.labelDo = new System.Windows.Forms.Label();
+            this.dateOd = new System.Windows.Forms.DateTimePicker();
             this.cbShowArchiwum = new System.Windows.Forms.CheckBox();
             this.bClear = new System.Windows.Forms.Button();
             this.bSearch = new System.Windows.Forms.Button();
@@ -51,10 +55,6 @@
             this.buttonZamknij = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.dateOd = new System.Windows.Forms.DateTimePicker();
-            this.labelDo = new System.Windows.Forms.Label();
-            this.labelOd = new System.Windows.Forms.Label();
-            this.dateDo = new System.Windows.Forms.DateTimePicker();
             this.panelNaglowek.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelStopka.SuspendLayout();
@@ -78,6 +78,48 @@
             this.panelNaglowek.Name = "panelNaglowek";
             this.panelNaglowek.Size = new System.Drawing.Size(1310, 62);
             this.panelNaglowek.TabIndex = 0;
+            // 
+            // dateDo
+            // 
+            this.dateDo.Enabled = false;
+            this.dateDo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateDo.Location = new System.Drawing.Point(767, 32);
+            this.dateDo.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dateDo.Name = "dateDo";
+            this.dateDo.Size = new System.Drawing.Size(88, 20);
+            this.dateDo.TabIndex = 9;
+            this.dateDo.Value = new System.DateTime(2016, 7, 15, 0, 0, 0, 0);
+            // 
+            // labelOd
+            // 
+            this.labelOd.AutoSize = true;
+            this.labelOd.Enabled = false;
+            this.labelOd.Location = new System.Drawing.Point(573, 36);
+            this.labelOd.Name = "labelOd";
+            this.labelOd.Size = new System.Drawing.Size(44, 13);
+            this.labelOd.TabIndex = 8;
+            this.labelOd.Text = "Od daty";
+            // 
+            // labelDo
+            // 
+            this.labelDo.AutoSize = true;
+            this.labelDo.Enabled = false;
+            this.labelDo.Location = new System.Drawing.Point(717, 36);
+            this.labelDo.Name = "labelDo";
+            this.labelDo.Size = new System.Drawing.Size(44, 13);
+            this.labelDo.TabIndex = 7;
+            this.labelDo.Text = "Od daty";
+            // 
+            // dateOd
+            // 
+            this.dateOd.Enabled = false;
+            this.dateOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateOd.Location = new System.Drawing.Point(623, 32);
+            this.dateOd.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dateOd.Name = "dateOd";
+            this.dateOd.Size = new System.Drawing.Size(88, 20);
+            this.dateOd.TabIndex = 6;
+            this.dateOd.Value = new System.DateTime(2016, 7, 15, 0, 0, 0, 0);
             // 
             // cbShowArchiwum
             // 
@@ -241,6 +283,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1310, 590);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
@@ -249,54 +292,13 @@
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             this.dataGridView1.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowLeave);
+            this.dataGridView1.Enter += new System.EventHandler(this.dataGridView1_Enter);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
             // timer1
             // 
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // dateOd
-            // 
-            this.dateOd.Enabled = false;
-            this.dateOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateOd.Location = new System.Drawing.Point(623, 32);
-            this.dateOd.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.dateOd.Name = "dateOd";
-            this.dateOd.Size = new System.Drawing.Size(88, 20);
-            this.dateOd.TabIndex = 6;
-            this.dateOd.Value = new System.DateTime(2016, 7, 15, 0, 0, 0, 0);
-            // 
-            // labelDo
-            // 
-            this.labelDo.AutoSize = true;
-            this.labelDo.Enabled = false;
-            this.labelDo.Location = new System.Drawing.Point(717, 36);
-            this.labelDo.Name = "labelDo";
-            this.labelDo.Size = new System.Drawing.Size(44, 13);
-            this.labelDo.TabIndex = 7;
-            this.labelDo.Text = "Od daty";
-            // 
-            // labelOd
-            // 
-            this.labelOd.AutoSize = true;
-            this.labelOd.Enabled = false;
-            this.labelOd.Location = new System.Drawing.Point(573, 36);
-            this.labelOd.Name = "labelOd";
-            this.labelOd.Size = new System.Drawing.Size(44, 13);
-            this.labelOd.TabIndex = 8;
-            this.labelOd.Text = "Od daty";
-            // 
-            // dateDo
-            // 
-            this.dateDo.Enabled = false;
-            this.dateDo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDo.Location = new System.Drawing.Point(767, 32);
-            this.dateDo.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.dateDo.Name = "dateDo";
-            this.dateDo.Size = new System.Drawing.Size(88, 20);
-            this.dateDo.TabIndex = 9;
-            this.dateDo.Value = new System.DateTime(2016, 7, 15, 0, 0, 0, 0);
             // 
             // Panel
             // 

@@ -769,7 +769,29 @@ namespace Piaskownica
         private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             //wejście do komórki
+            //setCurrentKomorka(e);
+
+            jestWTrakceEdycji = true;
             setCurrentKomorka(e);
+            lToSearch.Text = "Kolumna do filtrowania: " + kolumna;
+            if (kolumna.Equals("Z_DNIA") || kolumna.Equals("OSTATNIA_ZMIANA"))
+            {
+                bClear.Enabled = false;
+                tTextToFind.Enabled = false;
+                labelDo.Enabled = true;
+                labelOd.Enabled = true;
+                dateOd.Enabled = true;
+                dateDo.Enabled = true;
+            }
+            else
+            {
+                bClear.Enabled = true;
+                tTextToFind.Enabled = true;
+                labelDo.Enabled = false;
+                labelOd.Enabled = false;
+                dateOd.Enabled = false;
+                dateDo.Enabled = false;
+            }
         }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
@@ -780,6 +802,20 @@ namespace Piaskownica
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             jestWTrakceEdycji = false;
+        }
+
+        private void dataGridView1_Enter(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Weszłem do komórki");
+        }
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            //MessageBox.Show("Przed edycja komórki");
+            jestWTrakceEdycji = true;
+            memberColumn = e.ColumnIndex;
+            memberRow = e.RowIndex;
+            kolumna = dataGridView1.Columns[e.ColumnIndex].Name;
         }
 
 

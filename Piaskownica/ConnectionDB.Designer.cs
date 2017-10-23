@@ -54,14 +54,16 @@
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszKonfiguracjęDoPlikuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.otwórzKonfiguracjęZPlikuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.sQLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tPath2 = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rDB1 = new System.Windows.Forms.RadioButton();
             this.rDB2 = new System.Windows.Forms.RadioButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.sQLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rDB1 = new System.Windows.Forms.RadioButton();
+            this.rDB3 = new System.Windows.Forms.RadioButton();
+            this.tPath3 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -78,7 +80,7 @@
             // 
             // Zapisz
             // 
-            this.Zapisz.Location = new System.Drawing.Point(258, 435);
+            this.Zapisz.Location = new System.Drawing.Point(258, 479);
             this.Zapisz.Name = "Zapisz";
             this.Zapisz.Size = new System.Drawing.Size(80, 32);
             this.Zapisz.TabIndex = 1;
@@ -197,7 +199,7 @@
             // statusStrip1
             // 
             this.statusStrip1.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.statusStrip1.Location = new System.Drawing.Point(0, 470);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 514);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(536, 22);
             this.statusStrip1.TabIndex = 13;
@@ -205,7 +207,7 @@
             // 
             // Testuj
             // 
-            this.Testuj.Location = new System.Drawing.Point(15, 435);
+            this.Testuj.Location = new System.Drawing.Point(15, 479);
             this.Testuj.Name = "Testuj";
             this.Testuj.Size = new System.Drawing.Size(75, 32);
             this.Testuj.TabIndex = 14;
@@ -216,7 +218,7 @@
             // outtext
             // 
             this.outtext.BackColor = System.Drawing.Color.Azure;
-            this.outtext.Location = new System.Drawing.Point(15, 244);
+            this.outtext.Location = new System.Drawing.Point(15, 288);
             this.outtext.Name = "outtext";
             this.outtext.ReadOnly = true;
             this.outtext.Size = new System.Drawing.Size(503, 151);
@@ -225,7 +227,7 @@
             // 
             // bRozlacz
             // 
-            this.bRozlacz.Location = new System.Drawing.Point(177, 435);
+            this.bRozlacz.Location = new System.Drawing.Point(177, 479);
             this.bRozlacz.Name = "bRozlacz";
             this.bRozlacz.Size = new System.Drawing.Size(75, 32);
             this.bRozlacz.TabIndex = 16;
@@ -235,7 +237,7 @@
             // 
             // bClear
             // 
-            this.bClear.Location = new System.Drawing.Point(456, 369);
+            this.bClear.Location = new System.Drawing.Point(456, 413);
             this.bClear.Name = "bClear";
             this.bClear.Size = new System.Drawing.Size(62, 26);
             this.bClear.TabIndex = 17;
@@ -245,7 +247,7 @@
             // 
             // bNewFDB
             // 
-            this.bNewFDB.Location = new System.Drawing.Point(96, 435);
+            this.bNewFDB.Location = new System.Drawing.Point(96, 479);
             this.bNewFDB.Name = "bNewFDB";
             this.bNewFDB.Size = new System.Drawing.Size(75, 32);
             this.bNewFDB.TabIndex = 18;
@@ -255,7 +257,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(443, 435);
+            this.button1.Location = new System.Drawing.Point(443, 479);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(80, 32);
             this.button1.TabIndex = 19;
@@ -298,6 +300,18 @@
             this.otwórzKonfiguracjęZPlikuToolStripMenuItem.Text = "Otwórz konfigurację z pliku";
             this.otwórzKonfiguracjęZPlikuToolStripMenuItem.Click += new System.EventHandler(this.otwórzKonfiguracjęZPlikuToolStripMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(216, 6);
+            // 
+            // sQLToolStripMenuItem
+            // 
+            this.sQLToolStripMenuItem.Name = "sQLToolStripMenuItem";
+            this.sQLToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.sQLToolStripMenuItem.Text = "SQL";
+            this.sQLToolStripMenuItem.Click += new System.EventHandler(this.sQLToolStripMenuItem_Click);
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -317,16 +331,28 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.rDB3);
+            this.groupBox2.Controls.Add(this.tPath3);
             this.groupBox2.Controls.Add(this.rDB2);
             this.groupBox2.Controls.Add(this.rDB1);
             this.groupBox2.Controls.Add(this.tPath);
             this.groupBox2.Controls.Add(this.tPath2);
             this.groupBox2.Location = new System.Drawing.Point(12, 161);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(506, 77);
+            this.groupBox2.Size = new System.Drawing.Size(506, 104);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ścieżka";
+            // 
+            // rDB2
+            // 
+            this.rDB2.AutoSize = true;
+            this.rDB2.Location = new System.Drawing.Point(36, 46);
+            this.rDB2.Name = "rDB2";
+            this.rDB2.Size = new System.Drawing.Size(112, 17);
+            this.rDB2.TabIndex = 23;
+            this.rDB2.Text = "Baza alternatywna";
+            this.rDB2.UseVisualStyleBackColor = true;
             // 
             // rDB1
             // 
@@ -340,34 +366,29 @@
             this.rDB1.Text = "Baza główna";
             this.rDB1.UseVisualStyleBackColor = true;
             // 
-            // rDB2
+            // rDB3
             // 
-            this.rDB2.AutoSize = true;
-            this.rDB2.Location = new System.Drawing.Point(36, 46);
-            this.rDB2.Name = "rDB2";
-            this.rDB2.Size = new System.Drawing.Size(112, 17);
-            this.rDB2.TabIndex = 23;
-            this.rDB2.Text = "Baza alternatywna";
-            this.rDB2.UseVisualStyleBackColor = true;
+            this.rDB3.AutoSize = true;
+            this.rDB3.Location = new System.Drawing.Point(36, 72);
+            this.rDB3.Name = "rDB3";
+            this.rDB3.Size = new System.Drawing.Size(112, 17);
+            this.rDB3.TabIndex = 25;
+            this.rDB3.Text = "Baza alternatywna";
+            this.rDB3.UseVisualStyleBackColor = true;
             // 
-            // toolStripSeparator1
+            // tPath3
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(216, 6);
-            // 
-            // sQLToolStripMenuItem
-            // 
-            this.sQLToolStripMenuItem.Name = "sQLToolStripMenuItem";
-            this.sQLToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
-            this.sQLToolStripMenuItem.Text = "SQL";
-            this.sQLToolStripMenuItem.Click += new System.EventHandler(this.sQLToolStripMenuItem_Click);
+            this.tPath3.Location = new System.Drawing.Point(160, 71);
+            this.tPath3.Name = "tPath3";
+            this.tPath3.Size = new System.Drawing.Size(340, 20);
+            this.tPath3.TabIndex = 24;
             // 
             // ConnectionDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(536, 492);
+            this.ClientSize = new System.Drawing.Size(536, 536);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bNewFDB);
@@ -438,5 +459,7 @@
         private System.Windows.Forms.RadioButton rDB1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem sQLToolStripMenuItem;
+        private System.Windows.Forms.RadioButton rDB3;
+        private System.Windows.Forms.TextBox tPath3;
     }
 }

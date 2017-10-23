@@ -139,10 +139,10 @@ namespace Piaskownica
                 else
                 {
                     setloc[2] = "Database=C:\\Firebird\\Databases\\KopiaPiaskownica.fdb;";
-                    setloc[2] = "Database=/usr/samba/imex/piaskownica/PIASKOWNICA.FDB;";
+                    setloc[2] = "Database=/usr/raks/piaskownica/PIASKOWNICA.FDB;";
                 };
             }
-            else
+            else if (rDB2.Checked)
             {
                 if (tPath2.Text.Length > 0)
                 {
@@ -151,7 +151,19 @@ namespace Piaskownica
                 else
                 {
                     setloc[2] = "Database=C:\\data\\PiaskownicaNS.fdb;";
-                    setloc[2] = "Database=/usr/samba/imex/piaskownica/PIASKOWNICANS.FDB;";
+                    setloc[2] = "Database=/usr/raks/piaskownica/PIASKOWNICANS.FDB;";
+                };
+            }
+            else
+            {
+                if (tPath3.Text.Length > 0)
+                {
+                    setloc[2] = "Database=" + tPath3.Text + ";";
+                }
+                else
+                {
+                    setloc[2] = "Database=C:\\data\\PiaskownicaNS.fdb;";
+                    setloc[2] = "Database=/usr/raks/piaskownica/PIASKOWNICAWAW.FDB;";
                 };
             }
             
@@ -246,11 +258,14 @@ namespace Piaskownica
                 
                 if (rDB1.Checked)
                     rejestr.SetValue("Typ", "true");
-                else
+                else if (rDB2.Checked)
                     rejestr.SetValue("Typ", "false");
+                else
+                    rejestr.SetValue("Typ", "else");
 
                 rejestr.SetValue("Path", tPath.Text);
                 rejestr.SetValue("Path2", tPath2.Text);
+                rejestr.SetValue("Path3", tPath3.Text);
                 rejestr.SetValue("Port", tPort.Text);
                 }
                 catch (Exception ee)
@@ -291,15 +306,24 @@ namespace Piaskownica
             {
                 rDB1.Checked = true;
                 rDB2.Checked = false;
+                rDB3.Checked = false;
+            }
+            else if (tmpp.Equals("false"))
+            {
+                rDB1.Checked = false;
+                rDB2.Checked = true;
+                rDB3.Checked = false;
             }
             else
             {
                 rDB1.Checked = false;
-                rDB2.Checked = true;
+                rDB2.Checked = false;
+                rDB3.Checked = true;
             }
 
             tPath.Text = (String)rejestr.GetValue("Path");
-            tPath2.Text = (String)rejestr.GetValue("Path2"); 
+            tPath2.Text = (String)rejestr.GetValue("Path2");
+            tPath3.Text = (String)rejestr.GetValue("Path3");
             tPort.Text = (String)rejestr.GetValue("Port");
             }
             catch (Exception ee)
@@ -382,6 +406,7 @@ namespace Piaskownica
                             new XElement("tTyp", rDB1.Checked), 
                             new XElement("tPath", tPath.Text),
                             new XElement("tPath2", tPath2.Text),
+                            new XElement("tPath3", tPath3.Text),
                             new XElement("tPort", tPort.Text)
                          )
                     );
@@ -407,6 +432,7 @@ namespace Piaskownica
                 tServer.Text = (String)xDoc.Root.Element("tServer");
                 tPath.Text = (String)xDoc.Root.Element("tPath");
                 tPath2.Text = (String)xDoc.Root.Element("tPath2");
+                tPath3.Text = (String)xDoc.Root.Element("tPath3");
                 tPort.Text = (String)xDoc.Root.Element("tPort");
             }
         }
